@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covington Lumberjacks 2026 Schedule</title>
+    <link rel="icon" type="image/jpeg" href="jacks_logo.jpg">
+    <link rel="apple-touch-icon" href="jacks_logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #07304f;
+            --navy-900: #031a2c;
+            --blue: #117fa5;
+            --red: #ba1e2d;
+            --bg: #f5f7f8;
+            --surface: #ffffff;
+            --surface-soft: #f9fbfc;
+            --line: #dce4e8;
+            --ink: #142536;
+            --muted: #657483;
+            --home-bg: #eef8fb;
+            --away-bg: #fff3f4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: var(--bg);
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "IBM Plex Sans", "Aptos", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background:
+                linear-gradient(180deg, #e9eef2 0, #f5f7f8 320px),
+                var(--bg);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .site-shell {
+            width: min(1060px, 100%);
+            margin: 0 auto;
+            padding: 24px 20px 44px;
+        }
+
+        .masthead {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 24px;
+            align-items: center;
+            padding: 28px 30px;
+            color: #fff;
+            background:
+                linear-gradient(90deg, rgba(186, 30, 45, 0.9) 0 4px, transparent 4px),
+                linear-gradient(135deg, var(--navy-900), var(--navy));
+            border-radius: 6px;
+            box-shadow: 0 14px 34px rgba(3, 26, 44, 0.16);
+            overflow: hidden;
+        }
+
+        .masthead::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--red), var(--blue));
+        }
+
+        .logo-card {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: clamp(96px, 12vw, 128px);
+            aspect-ratio: 1;
+            padding: 9px;
+            background: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 50%;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+        }
+
+        .logo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: #b9ddea;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(2rem, 4.8vw, 3.65rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .season-line {
+            max-width: 660px;
+            margin: 10px 0 0;
+            color: #d9e8ee;
+            font-size: clamp(0.98rem, 1.3vw, 1.06rem);
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 120px));
+            gap: 1px;
+            width: fit-content;
+            margin: 18px 0 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .stat {
+            min-width: 0;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat strong,
+        .stat span {
+            display: block;
+        }
+
+        .stat strong {
+            color: #fff;
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat span {
+            margin-top: 5px;
+            color: #b8c8d0;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .schedule-panel {
+            margin-top: 24px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            box-shadow: 0 10px 26px rgba(20, 37, 54, 0.07);
+            overflow: hidden;
+        }
+
+        .panel-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--line);
+            background: var(--surface);
+        }
+
+        .panel-top h2 {
+            margin: 0;
+            color: var(--navy-900);
+            font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .panel-top p {
+            margin: 5px 0 0;
+            color: #34495a;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        caption {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        th {
+            padding: 11px 16px;
+            color: #dbe8ee;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-align: left;
+            text-transform: uppercase;
+            background: var(--navy-900);
+        }
+
+        td {
+            padding: 13px 16px;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--line);
+        }
+
+        tbody tr {
+            background: var(--surface);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--surface-soft);
+        }
+
+        tbody tr:hover {
+            background: #f0f6f8;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .date {
+            min-width: 152px;
+            color: var(--navy-900);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .time {
+            min-width: 118px;
+            color: #263847;
+            font-size: 0.93rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .opponent {
+            color: var(--navy-900);
+            font-weight: 700;
+        }
+
+        .opponent small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 0.81rem;
+            font-weight: 600;
+        }
+
+        .location {
+            color: #4f6170;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .location a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(17, 127, 165, 0.38);
+        }
+
+        .location a:hover {
+            color: var(--blue);
+            border-bottom-color: currentColor;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 58px;
+            min-height: 26px;
+            padding: 4px 9px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid currentColor;
+            border-radius: 999px;
+        }
+
+        .badge.home {
+            color: var(--blue);
+            background: var(--home-bg);
+        }
+
+        .badge.away {
+            color: var(--red);
+            background: var(--away-bg);
+        }
+
+        @media (max-width: 760px) {
+            .site-shell {
+                padding: 12px 10px 30px;
+            }
+
+            .masthead {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 22px 16px;
+                text-align: center;
+            }
+
+            .logo-card {
+                width: 100px;
+                justify-self: center;
+            }
+
+            .eyebrow {
+                font-size: 0.7rem;
+            }
+
+            h1 {
+                font-size: clamp(2.1rem, 12vw, 3.2rem);
+            }
+
+            .season-line {
+                margin-inline: auto;
+                font-size: 0.98rem;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                width: 100%;
+                margin-top: 16px;
+                text-align: left;
+            }
+
+            .panel-top {
+                display: block;
+                padding: 16px;
+            }
+
+            .table-wrap {
+                overflow: visible;
+            }
+
+            table,
+            tbody,
+            tr,
+            td {
+                display: block;
+                width: 100%;
+            }
+
+            thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            tbody {
+                padding: 10px;
+                background: #eef3f5;
+            }
+
+            tbody tr,
+            tbody tr:nth-child(even) {
+                display: grid;
+                margin-bottom: 10px;
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-left: 4px solid var(--blue);
+                border-radius: 6px;
+                box-shadow: 0 4px 12px rgba(20, 37, 54, 0.055);
+                overflow: hidden;
+            }
+
+            tbody tr.away-game {
+                border-left-color: var(--red);
+            }
+
+            tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            td {
+                display: grid;
+                grid-template-columns: minmax(86px, 31%) 1fr;
+                gap: 10px;
+                align-items: baseline;
+                min-height: 43px;
+                padding: 10px 12px;
+                border-bottom: 1px solid var(--line);
+            }
+
+            td:last-child {
+                border-bottom: 0;
+            }
+
+            td::before {
+                content: attr(data-label);
+                color: var(--muted);
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+
+            .date,
+            .time {
+                min-width: 0;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .masthead {
+                padding-inline: 14px;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-top h2 {
+                font-size: 1.18rem;
+            }
+
+            td {
+                grid-template-columns: 1fr;
+                gap: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="site-shell">
+        <header class="masthead">
+            <div class="logo-card" aria-hidden="true">
+                <img src="jacks_logo.jpg" alt="">
+            </div>
+            <div class="hero-copy">
+                <p class="eyebrow">Valley Baseball League</p>
+                <h1>Covington Lumberjacks</h1>
+                <p class="season-line">2026 regular season schedule for Covington Lumberjacks baseball.</p>
+                <div class="quick-stats" aria-label="Schedule summary">
+                    <div class="stat">
+                        <strong>36</strong>
+                        <span>Games</span>
+                    </div>
+                    <div class="stat">
+                        <strong>18</strong>
+                        <span>Home</span>
+                    </div>
+                    <div class="stat">
+                        <strong>18</strong>
+                        <span>Away</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="schedule-panel" aria-labelledby="schedule-title">
+            <div class="panel-top">
+                <div>
+                    <h2 id="schedule-title">2026 Game Schedule</h2>
+                    <p>Home games are at Casey Field.</p>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <caption>Covington Lumberjacks 2026 schedule</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time / Status</th>
+                            <th scope="col">Home/Away</th>
+                            <th scope="col">Matchup</th>
+                            <th scope="col">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, May 29</td>
+                            <td class="time" data-label="Time">Final, 8-6</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Staunton Braves<small>Covington Lumberjacks at Staunton Braves</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Saturday, May 30</td>
+                            <td class="time" data-label="Time">Final, 12-8</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Waynesboro Generals<small>Waynesboro Generals at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Sunday, May 31</td>
+                            <td class="time" data-label="Time">7:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ New Market Rebels<small>Covington Lumberjacks at New Market Rebels</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Rebel%20Park%20New%20Market%20VA" target="_blank" rel="noopener">Rebel Park</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, June 3</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Harrisonburg Turks<small>Harrisonburg Turks at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, June 4</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Winchester Royals<small>Covington Lumberjacks at Winchester Royals</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Bridgeforth%20Field%20Winchester%20VA" target="_blank" rel="noopener">Bridgeforth Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 5</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Staunton Braves<small>Staunton Braves at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, June 6</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Waynesboro Generals<small>Covington Lumberjacks at Waynesboro Generals</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Sunday, June 7</td>
+                            <td class="time" data-label="Time">3:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Charlottesville Tom Sox<small>Covington Lumberjacks at Charlottesville Tom Sox</small></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, June 10</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Culpeper Cavaliers<small>Culpeper Cavaliers at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Thursday, June 11</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Woodstock River Bandits<small>Woodstock River Bandits at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, June 12</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Waynesboro Generals<small>Covington Lumberjacks at Waynesboro Generals</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Saturday, June 13</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Harrisonburg Turks<small>Harrisonburg Turks at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, June 14</td>
+                            <td class="time" data-label="Time">4:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Charlottesville Tom Sox<small>Charlottesville Tom Sox at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Wednesday, June 17</td>
+                            <td class="time" data-label="Time">7:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Staunton Braves<small>Covington Lumberjacks at Staunton Braves</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Thursday, June 18</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Culpeper Cavaliers<small>Culpeper Cavaliers at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 19</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Waynesboro Generals<small>Waynesboro Generals at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, June 20</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Harrisonburg Turks<small>Covington Lumberjacks at Harrisonburg Turks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, June 21</td>
+                            <td class="time" data-label="Time">4:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Strasburg Express<small>Strasburg Express at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Wednesday, June 24</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Purcellville Cannons<small>Covington Lumberjacks at Purcellville Cannons</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Fireman%27s%20Field%20Purcellville%20VA" target="_blank" rel="noopener">Fireman's Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Thursday, June 25</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Harrisonburg Turks<small>Harrisonburg Turks at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 26</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Charlottesville Tom Sox<small>Charlottesville Tom Sox at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, June 27</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Culpeper Cavaliers<small>Covington Lumberjacks at Culpeper Cavaliers</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Sunday, June 28</td>
+                            <td class="time" data-label="Time">7:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Staunton Braves<small>Covington Lumberjacks at Staunton Braves</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, July 1</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Waynesboro Generals<small>Waynesboro Generals at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 2</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Charlottesville Tom Sox<small>Covington Lumberjacks at Charlottesville Tom Sox</small></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, July 3</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Culpeper Cavaliers<small>Covington Lumberjacks at Culpeper Cavaliers</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, July 5</td>
+                            <td class="time" data-label="Time">4:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Staunton Braves<small>Staunton Braves at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, July 8</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Front Royal Cardinals<small>Front Royal Cardinals at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 9</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Harrisonburg Turks<small>Covington Lumberjacks at Harrisonburg Turks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, July 10</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Charlottesville Tom Sox<small>Covington Lumberjacks at Charlottesville Tom Sox</small></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Saturday, July 11</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Culpeper Cavaliers<small>Culpeper Cavaliers at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, July 12</td>
+                            <td class="time" data-label="Time">4:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Staunton Braves<small>Staunton Braves at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Wednesday, July 15</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Waynesboro Generals<small>Covington Lumberjacks at Waynesboro Generals</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 16</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Culpeper Cavaliers<small>Covington Lumberjacks at Culpeper Cavaliers</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, July 17</td>
+                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup">vs Charlottesville Tom Sox<small>Charlottesville Tom Sox at Covington Lumberjacks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, July 18</td>
+                            <td class="time" data-label="Time">7:00 PM EST</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup">@ Harrisonburg Turks<small>Covington Lumberjacks at Harrisonburg Turks</small></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
