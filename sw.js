@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumberjacks-schedule-v4";
+const CACHE_NAME = "lumberjacks-schedule-v5";
 const ASSETS = [
     "/",
     "/index.html",
@@ -16,6 +16,7 @@ self.addEventListener("install", function (event) {
             return cache.addAll(ASSETS);
         })
     );
+    self.skipWaiting();
 });
 
 self.addEventListener("activate", function (event) {
@@ -32,10 +33,30 @@ self.addEventListener("activate", function (event) {
             );
         })
     );
+    self.clients.claim();
 });
 
 self.addEventListener("fetch", function (event) {
     if (event.request.method !== "GET") {
+        return;
+    }
+
+    if (event.request.mode === "navigate" || event.request.destination === "document") {
+        event.respondWith(
+            fetch(event.request)
+                .then(function (response) {
+                    const responseCopy = response.clone();
+
+                    caches.open(CACHE_NAME).then(function (cache) {
+                        cache.put(event.request, responseCopy);
+                    });
+
+                    return response;
+                })
+                .catch(function () {
+                    return caches.match(event.request);
+                })
+        );
         return;
     }
 
