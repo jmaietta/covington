@@ -6,6 +6,11 @@
     <title>Covington Lumberjacks 2026 Schedule</title>
     <link rel="icon" type="image/jpeg" href="jacks_logo.jpg">
     <link rel="apple-touch-icon" href="jacks_logo.jpg">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#07304f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Lumberjacks">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -779,5 +784,12 @@
             </div>
         </section>
     </main>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("sw.js");
+            });
+        }
+    </script>
 </body>
 </html>
