@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumberjacks-schedule-v8";
+const CACHE_NAME = "lumberjacks-schedule-v9";
 const ASSETS = [
     "/",
     "/index.html",
