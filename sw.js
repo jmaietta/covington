@@ -3,6 +3,9 @@ const ASSETS = [
     "/",
     "/index.html",
     "/jacks_logo.jpg",
+    "/icon-180.png",
+    "/icon-192.png",
+    "/icon-512.png",
     "/manifest.webmanifest"
 ];
 
