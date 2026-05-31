@@ -6,6 +6,7 @@ Single-page HTML schedule for the Covington Lumberjacks 2026 season.
 
 - `index.html` - Main schedule page with embedded CSS.
 - `jacks_logo.jpg` - Team logo used in the header and favicon.
+- `icon-180.png`, `icon-192.png`, `icon-512.png` - Square app icons used for phone home-screen installs.
 - `schedule.ics` - Source calendar file used to confirm the schedule dates.
 - `manifest.webmanifest` - Web app manifest for saving the site to a phone home screen.
 - `sw.js` - Basic service worker for caching the page and logo.
