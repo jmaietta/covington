@@ -7,12 +7,21 @@ Single-page HTML schedule for the Covington Lumberjacks 2026 season.
 - `index.html` - Main schedule page with embedded CSS.
 - `jacks_logo.jpg` - Team logo used in the header and favicon.
 - `schedule.ics` - Source calendar file used to confirm the schedule dates.
+- `manifest.webmanifest` - Web app manifest for saving the site to a phone home screen.
+- `sw.js` - Basic service worker for caching the page and logo.
 
 ## How To View
 
 Open `index.html` directly in a browser.
 
 No build step, package install, or local server is required.
+
+## Mobile Home Screen
+
+After deploying to Vercel, the site can be saved to a phone home screen.
+
+- iPhone Safari: open the site, tap Share, then tap Add to Home Screen.
+- Android Chrome: open the site, tap the menu, then tap Add to Home screen or Install app.
 
 ## Maintenance Notes
 
