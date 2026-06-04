@@ -150,6 +150,19 @@
             font-size: clamp(0.98rem, 1.3vw, 1.06rem);
         }
 
+        .season-line a {
+            color: inherit;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: rgba(217, 232, 238, 0.62);
+            text-underline-offset: 3px;
+        }
+
+        .season-line a:hover {
+            color: #fff;
+            text-decoration-color: currentColor;
+        }
+
         .quick-stats {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 120px));
@@ -509,7 +522,7 @@
             <div class="hero-copy">
                 <p class="eyebrow">Valley Baseball League</p>
                 <h1>Covington Lumberjacks</h1>
-                <p class="season-line">2026 regular season schedule for Covington Lumberjacks baseball.</p>
+                <p class="season-line">2026 regular season schedule for <a href="https://www.youtube.com/@CovingtonLumberjacks/streams" target="_blank" rel="noopener">Covington Lumberjacks</a> baseball.</p>
                 <div class="quick-stats" aria-label="Schedule summary">
                     <div class="stat">
                         <strong>36</strong>
