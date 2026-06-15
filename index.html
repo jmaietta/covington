@@ -176,7 +176,7 @@
 
         .quick-stats {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 120px));
+            grid-template-columns: repeat(4, minmax(0, 120px));
             gap: 1px;
             width: fit-content;
             margin: 18px 0 0;
@@ -249,6 +249,61 @@
 
         .table-wrap {
             overflow-x: auto;
+        }
+
+        .past-results {
+            border-top: 1px solid var(--line);
+            background: var(--surface);
+        }
+
+        .past-results summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 56px;
+            padding: 14px 22px;
+            color: var(--navy-900);
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .past-results summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .past-results summary::after {
+            content: "+";
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 auto;
+            width: 28px;
+            aspect-ratio: 1;
+            color: #fff;
+            background: var(--navy);
+            border-radius: 50%;
+        }
+
+        .past-results[open] summary::after {
+            content: "-";
+        }
+
+        .past-results .summary-copy {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            align-items: baseline;
+        }
+
+        .past-results .summary-meta {
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .past-results .table-wrap {
+            border-top: 1px solid var(--line);
         }
 
         table {
@@ -416,6 +471,16 @@
                 padding: 16px;
             }
 
+            .past-results summary {
+                align-items: flex-start;
+                min-height: 0;
+                padding: 14px 16px;
+            }
+
+            .past-results .summary-copy {
+                display: grid;
+            }
+
             .table-wrap {
                 overflow: visible;
             }
@@ -534,7 +599,11 @@
                 <p class="eyebrow"><a href="https://valleybaseballleague.com/" target="_blank" rel="noopener">Valley Baseball League</a></p>
                 <h1>Covington Lumberjacks</h1>
                 <p class="season-line">2026 regular season schedule for <a href="https://www.youtube.com/@CovingtonLumberjacks/streams" target="_blank" rel="noopener">Covington Lumberjacks</a> baseball.</p>
-                <div class="quick-stats" aria-label="Schedule summary">
+                <div class="quick-stats" aria-label="Season summary">
+                    <div class="stat">
+                        <strong>2-9</strong>
+                        <span>Record</span>
+                    </div>
                     <div class="stat">
                         <strong>36</strong>
                         <span>Games</span>
@@ -554,14 +623,14 @@
         <section class="schedule-panel" aria-labelledby="schedule-title">
             <div class="panel-top">
                 <div>
-                    <h2 id="schedule-title">2026 Game Schedule</h2>
-                    <p>Home games are at Casey Field.</p>
+                    <h2 id="schedule-title">Upcoming Games</h2>
+                    <p>Home games are at Casey Field. Times are EDT.</p>
                 </div>
             </div>
 
             <div class="table-wrap">
                 <table>
-                    <caption>Covington Lumberjacks 2026 schedule</caption>
+                    <caption>Covington Lumberjacks 2026 upcoming schedule</caption>
                     <thead>
                         <tr>
                             <th scope="col">Date</th>
@@ -572,32 +641,245 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Tuesday, June 16</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
                         <tr class="away-game">
-                            <td class="date" data-label="Date">Friday, May 29</td>
-                            <td class="time" data-label="Time">W, 8-6</td>
+                            <td class="date" data-label="Date">Wednesday, June 17</td>
+                            <td class="time" data-label="Time">7:30 PM EDT</td>
                             <td data-label="Home/Away"><span class="badge away">Away</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
                         </tr>
                         <tr class="home-game">
-                            <td class="date" data-label="Date">Saturday, May 30</td>
-                            <td class="time" data-label="Time">L, 12-8</td>
+                            <td class="date" data-label="Date">Thursday, June 18</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 19</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
                             <td data-label="Home/Away"><span class="badge home">Home</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;Waynesboro Generals</span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
                         </tr>
                         <tr class="away-game">
-                            <td class="date" data-label="Date">Sunday, May 31</td>
-                            <td class="time" data-label="Time">L, 13-9</td>
+                            <td class="date" data-label="Date">Saturday, June 20</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
                             <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@nmrebelsvbl/streams" target="_blank" rel="noopener">New Market Rebels</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Rebel%20Park%20New%20Market%20VA" target="_blank" rel="noopener">Rebel Park</a></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
                         </tr>
                         <tr class="home-game">
-                            <td class="date" data-label="Date">Wednesday, June 3</td>
-                            <td class="time" data-label="Time">L, 9-5</td>
+                            <td class="date" data-label="Date">Sunday, June 21</td>
+                            <td class="time" data-label="Time">4:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@strasburgexpress/streams" target="_blank" rel="noopener">Strasburg Express</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Wednesday, June 24</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@purcellvillecannons7749/streams" target="_blank" rel="noopener">Purcellville Cannons</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Fireman%27s%20Field%20Purcellville%20VA" target="_blank" rel="noopener">Fireman's Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Thursday, June 25</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
                             <td data-label="Home/Away"><span class="badge home">Home</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 26</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, June 27</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Sunday, June 28</td>
+                            <td class="time" data-label="Time">7:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, July 1</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;Waynesboro Generals</span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 2</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, July 3</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, July 5</td>
+                            <td class="time" data-label="Time">4:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Wednesday, July 8</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@frontroyalcardinalsbasebal4929/streams" target="_blank" rel="noopener">Front Royal Cardinals</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 9</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, July 10</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Saturday, July 11</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, July 12</td>
+                            <td class="time" data-label="Time">4:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Wednesday, July 15</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Thursday, July 16</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, July 17</td>
+                            <td class="time" data-label="Time">6:30 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, July 18</td>
+                            <td class="time" data-label="Time">7:00 PM EDT</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <details class="past-results">
+                <summary>
+                    <span class="summary-copy">
+                        <span>Recent Results &amp; Updates</span>
+                        <span class="summary-meta">2-9 through June 14</span>
+                    </span>
+                </summary>
+                <div class="table-wrap">
+                    <table>
+                        <caption>Covington Lumberjacks 2026 recent results</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time / Status</th>
+                                <th scope="col">Home/Away</th>
+                                <th scope="col">Matchup</th>
+                                <th scope="col">Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Sunday, June 14</td>
+                            <td class="time" data-label="Time">Postponed</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Saturday, June 13</td>
+                            <td class="time" data-label="Time">L, 15-2 (8 inn.)</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Friday, June 12</td>
+                            <td class="time" data-label="Time">W, 8-2</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Thursday, June 11</td>
+                            <td class="time" data-label="Time">L, 10-2</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@woodstockriverbandits3818/streams" target="_blank" rel="noopener">Woodstock River Bandits</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Sunday, June 7</td>
+                            <td class="time" data-label="Time">L, 4-1</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
+                        </tr>
+                        <tr class="away-game">
+                            <td class="date" data-label="Date">Saturday, June 6</td>
+                            <td class="time" data-label="Time">L, 7-6</td>
+                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
+                        </tr>
+                        <tr class="home-game">
+                            <td class="date" data-label="Date">Friday, June 5</td>
+                            <td class="time" data-label="Time">L, 9-4</td>
+                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
                         </tr>
                         <tr class="away-game">
@@ -608,225 +890,37 @@
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Bridgeforth%20Field%20Winchester%20VA" target="_blank" rel="noopener">Bridgeforth Field</a></td>
                         </tr>
                         <tr class="home-game">
-                            <td class="date" data-label="Date">Friday, June 5</td>
-                            <td class="time" data-label="Time">L, 9-4</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Saturday, June 6</td>
-                            <td class="time" data-label="Time">L, 7-6</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Sunday, June 7</td>
-                            <td class="time" data-label="Time">L, 4-1</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Wednesday, June 10</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Thursday, June 11</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@woodstockriverbandits3818/streams" target="_blank" rel="noopener">Woodstock River Bandits</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Friday, June 12</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Saturday, June 13</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td class="date" data-label="Date">Wednesday, June 3</td>
+                            <td class="time" data-label="Time">L, 9-5</td>
                             <td data-label="Home/Away"><span class="badge home">Home</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
                         </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Sunday, June 14</td>
-                            <td class="time" data-label="Time">4:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
                         <tr class="away-game">
-                            <td class="date" data-label="Date">Wednesday, June 17</td>
-                            <td class="time" data-label="Time">7:30 PM EST</td>
+                            <td class="date" data-label="Date">Sunday, May 31</td>
+                            <td class="time" data-label="Time">L, 13-9</td>
                             <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
+                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@nmrebelsvbl/streams" target="_blank" rel="noopener">New Market Rebels</a></span></td>
+                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Rebel%20Park%20New%20Market%20VA" target="_blank" rel="noopener">Rebel Park</a></td>
                         </tr>
                         <tr class="home-game">
-                            <td class="date" data-label="Date">Thursday, June 18</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Friday, June 19</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
+                            <td class="date" data-label="Date">Saturday, May 30</td>
+                            <td class="time" data-label="Time">L, 12-8</td>
                             <td data-label="Home/Away"><span class="badge home">Home</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;Waynesboro Generals</span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
                         </tr>
                         <tr class="away-game">
-                            <td class="date" data-label="Date">Saturday, June 20</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Sunday, June 21</td>
-                            <td class="time" data-label="Time">4:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@strasburgexpress/streams" target="_blank" rel="noopener">Strasburg Express</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Wednesday, June 24</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@purcellvillecannons7749/streams" target="_blank" rel="noopener">Purcellville Cannons</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Fireman%27s%20Field%20Purcellville%20VA" target="_blank" rel="noopener">Fireman's Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Thursday, June 25</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Friday, June 26</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Saturday, June 27</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Sunday, June 28</td>
-                            <td class="time" data-label="Time">7:30 PM EST</td>
+                            <td class="date" data-label="Date">Friday, May 29</td>
+                            <td class="time" data-label="Time">W, 8-6</td>
                             <td data-label="Home/Away"><span class="badge away">Away</span></td>
                             <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
                             <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Moxie%20Stadium%20Staunton%20VA" target="_blank" rel="noopener">Moxie Stadium</a></td>
                         </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Wednesday, July 1</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;Waynesboro Generals</span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Thursday, July 2</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Friday, July 3</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Sunday, July 5</td>
-                            <td class="time" data-label="Time">4:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Wednesday, July 8</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@frontroyalcardinalsbasebal4929/streams" target="_blank" rel="noopener">Front Royal Cardinals</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Thursday, July 9</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Friday, July 10</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://maps.app.goo.gl/8VndqJhcndqdjHzE9" target="_blank" rel="noopener">CHO Airport Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Saturday, July 11</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Sunday, July 12</td>
-                            <td class="time" data-label="Time">4:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@StauntonBravesBaseball/streams" target="_blank" rel="noopener">Staunton Braves</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Wednesday, July 15</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;Waynesboro Generals</span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Kate%20Collins%20Field%20Waynesboro%20VA" target="_blank" rel="noopener">Kate Collins Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Thursday, July 16</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@CulpCavaliers/streams" target="_blank" rel="noopener">Culpeper Cavaliers</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Culpeper%20High%20School%20Culpeper%20VA" target="_blank" rel="noopener">Culpeper H.S.</a></td>
-                        </tr>
-                        <tr class="home-game">
-                            <td class="date" data-label="Date">Friday, July 17</td>
-                            <td class="time" data-label="Time">6:30 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge home">Home</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">vs&nbsp;<a href="https://www.youtube.com/@cvilletomsox/streams" target="_blank" rel="noopener">Charlottesville Tom Sox</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=Casey%20Field%20Covington%20VA" target="_blank" rel="noopener">Casey Field</a></td>
-                        </tr>
-                        <tr class="away-game">
-                            <td class="date" data-label="Date">Saturday, July 18</td>
-                            <td class="time" data-label="Time">7:00 PM EST</td>
-                            <td data-label="Home/Away"><span class="badge away">Away</span></td>
-                            <td class="opponent" data-label="Matchup"><span class="matchup-text">@&nbsp;<a href="https://www.youtube.com/@HarrisonburgTurks/streams" target="_blank" rel="noopener">Harrisonburg Turks</a></span></td>
-                            <td class="location" data-label="Location"><a href="https://www.google.com/maps/search/?api=1&query=JMU%20Eagle%20Field%20Harrisonburg%20VA" target="_blank" rel="noopener">JMU Eagle Field</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
         </section>
     </main>
     <script>
